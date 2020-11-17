@@ -14,4 +14,8 @@ describe BandPass do
     @bandpass.change_min_and_max_values(20, 3000) 
     expect(@bandpass.filter_frequencies).to eq([20, 35, 39, 40, 68, 3000, 999, 78, 1001, 3000])
   end
+
+  it("throws an error if only one min or max value is passed") do
+    expect{ @bandpass.change_min_and_max_values(20) }.to raise_error ArgumentError
+  end
 end
